@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UPDATE: Your page title -->
+    <title>Amritanshu Kumar | Cybersecurity Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/kumar20" target="_blank" class="social-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/amritanshu8661" target="_blank" class="social-link" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Header Section - Update your name and navigation items -->
+    <header>
+        <div class="container">
+            <!-- Update the name in the header -->
+            <div class="logo">
+                <h1>Amritanshu<span>Kumar</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <!-- UPDATE: Navigation links - add or remove as needed -->
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Update your introduction -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- UPDATE: Your name and headline -->
+                <h1>Hello, I'm <span>Amritanshu Kumar</span></h1>
+                <h2>Web Developer</h2>
+                <p>Passionate about creating beautiful and functional websites</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                    <a href="resume.html" target="_blank" class="btn accent-btn">
+                        <i class="fas fa-eye"></i> View Resume
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- UPDATE: Replace with your profile image -->
+                <div class="profile-img-placeholder">
+                    <img src="public/images/profile-photo.jpeg" alt="Amritanshu Kumar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Update your biography -->
+    <section id="about" class="about section-with-sidebar">
+    <div class="vertical-sidebar">
+        <span>MY</span> ABOUT
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <!-- Achievement Cards -->
+        <div class="achievement-cards">
+            <div class="achievement-card" data-modal="experience-modal">
+                <div class="achievement-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-number">2+</h3>
+                    <p class="achievement-text">Years of Experience</p>
+                </div>
+                <div class="achievement-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="achievement-card" data-modal="events-modal">
+                <div class="achievement-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-number">50+</h3>
+                    <p class="achievement-text">Successful Events</p>
+                </div>
+                <div class="achievement-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-left">
+                <div class="about-text">
+                    <!-- UPDATE: Your biography paragraphs -->
+                    <p>I am Amritanshu Kumar, a passionate web developer with expertise in creating responsive and user-friendly websites. I focus on delivering clean, efficient code and exceptional user experiences.</p>
+                    <p>With a strong foundation in modern web technologies and a keen eye for design, I am dedicated to building innovative solutions that meet client needs and exceed expectations.</p>
+                </div>
+            </div>
+            <div class="about-right">
+                <div class="about-columns">
+                    <!-- Education Column -->
+                    <div class="about-column">
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h3>Education</h3>
+                                <p>B.Tech in Computer Science & Engineering</p>
+                                <p>Lovely Professional University</p>
+                                <p>2021 - 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Specialization Column -->
+                    <div class="about-column">
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>Specialization</h3>
+                                <p>Cybersecurity</p>
+                                <p>Network Security</p>
+                                <p>Ethical Hacking</p>
+                                <p>Digital Forensics</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications Column -->
+                    <div class="about-column">
+                        <div class="detail-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h3>Certifications</h3>
+                                <p>Cyber Security Training (IIT Bombay)</p>
+                                <p>Introduction to Cybersecurity Tools (IBM)</p>
+                                <p>Programming in C++ Specialization</p>
+                                <a href="certifications.html" class="btn secondary-btn cert-btn">
+                                    <i class="fas fa-external-link-alt"></i> View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Rest of the HTML remains the same -->
+    <!-- NEW Skills Section - Redesigned to match the image -->
+    <section id="skills" class="skills-container">
+        <div class="skills-sidebar"><span>MY</span> SKILLS</div>
+        <div class="container">
+            <div class="skills-content-wrapper">
+                <div class="skills-header">
+                    <h2>What My Programming Skills Included?</h2>
+                    <p class="skills-description">I develop secure and efficient applications with a focus on cybersecurity principles. My technical expertise allows me to create solutions that protect digital assets while maintaining usability.</p>
+                </div>
+                
+                <div class="skills-tabs">
+                    <button class="skills-tab active" data-tab="skills">Skills</button>
+                    <button class="skills-tab" data-tab="tools">Tools</button>
+                </div>
+                
+                <div class="skills-tab-content active" id="skills-content">
+                    <div class="skills-icons">
+                        <div class="skill-icon" data-skill="Python">
+                            <i class="fab fa-python" style="color: #3776AB;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="Java">
+                            <i class="fab fa-java" style="color: #ED8B00;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="HTML5">
+                            <i class="fab fa-html5" style="color: #E34F26;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="CSS3">
+                            <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="JavaScript">
+                            <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="Cybersecurity">
+                            <i class="fas fa-shield-alt" style="color: #6C63FF;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-tab-content" id="tools-content">
+                    <div class="skills-icons">
+                        <div class="skill-icon" data-skill="Linux">
+                            <i class="fab fa-linux" style="color: #FCC624;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="Terminal">
+                            <i class="fas fa-terminal" style="color: #4EAA25;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="Git">
+                            <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="GitHub">
+                            <i class="fab fa-github" style="color: #333333;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="VS Code">
+                            <i class="fas fa-code" style="color: #007ACC;"></i>
+                        </div>
+                        <div class="skill-icon" data-skill="Databases">
+                            <i class="fas fa-database" style="color: #336791;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Update your projects -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="project-filters">
+                <!-- UPDATE: Project categories - add or remove button elements -->
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <!-- ADD MORE FILTERS: Copy and paste the button element and change the text and data-filter attribute -->
+            </div>
+            
+            <div class="projects-grid">
+                <!-- PROJECT 1: Update project details -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-img">
+                        <!-- UPDATE: Project image path -->
+                        <img src="public/images/chatbot-project.png" alt="AI Chatbot Project">
+                        <div class="project-overlay">
+                            <a href="#" class="view-project">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <!-- UPDATE: Project title -->
+                        <h3>AI Chatbot</h3>
+                        <!-- UPDATE: Project description -->
+                        <p>Developed an intelligent chatbot using natural language processing to provide automated customer support and information retrieval.</p>
+                        <div class="project-tech">
+                            <!-- UPDATE: Technologies used - add or remove span elements -->
+                            <span>Python</span>
+                            <span>NLP</span>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- UPDATE: Project links - update href attributes -->
+                            <a href="https://github.com/yourusername/ai-chatbot" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Update project details -->
+                <div class="project-card" data-category="security">
+                    <div class="project-img">
+                        <!-- UPDATE: Project image path -->
+                        <img src="public/images/chat-software.png" alt="Secure Chat Software">
+                        <div class="project-overlay">
+                            <a href="#" class="view-project">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <!-- UPDATE: Project title -->
+                        <h3>Secure Chat Software</h3>
+                        <!-- UPDATE: Project description -->
+                        <p>Built an end-to-end encrypted chat application with focus on privacy and security for sensitive communications.</p>
+                        <div class="project-tech">
+                            <!-- UPDATE: Technologies used - add or remove span elements -->
+                            <span>JavaScript</span>
+                            <span>Encryption</span>
+                            <span>WebSockets</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- UPDATE: Project links - update href attributes -->
+                            <a href="https://github.com/yourusername/secure-chat" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: Update project details -->
+                <div class="project-card" data-category="mobile">
+                    <div class="project-img">
+                        <!-- UPDATE: Project image path -->
+                        <img src="public/images/mobile-tracking.png" alt="Mobile Tracking Software">
+                        <div class="project-overlay">
+                            <a href="#" class="view-project">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <!-- UPDATE: Project title -->
+                        <h3>Mobile Tracking Software</h3>
+                        <!-- UPDATE: Project description -->
+                        <p>Developed a secure mobile tracking solution with privacy controls and location monitoring capabilities.</p>
+                        <div class="project-tech">
+                            <!-- UPDATE: Technologies used - add or remove span elements -->
+                            <span>Java</span>
+                            <span>Android</span>
+                            <span>GPS</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- UPDATE: Project links - update href attributes -->
+                            <a href="https://github.com/yourusername/mobile-tracker" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section - Update your work experience -->
+    <section id="experience" class="experience section-with-sidebar right-sidebar">
+    <div class="vertical-sidebar right">
+        <span>MY</span> WORK
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <h2>Work Experience</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="timeline">
+            <!-- EXPERIENCE 1: Update job details -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <!-- UPDATE: Job title -->
+                    <h3>Event Lead</h3>
+                    <!-- UPDATE: Company name -->
+                    <h4>EventEye</h4>
+                    <!-- UPDATE: Employment period -->
+                    <p class="timeline-date">Present</p>
+                    <!-- UPDATE: Job description -->
+                    <p>Currently working as an Event Lead, managing and coordinating various events, ensuring security protocols are followed, and implementing technical solutions for event management.</p>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE 2: Update job details -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <!-- UPDATE: Job title -->
+                    <h3>Secretary</h3>
+                    <!-- UPDATE: Company name -->
+                    <h4>Oasis</h4>
+                    <!-- UPDATE: Employment period -->
+                    <p class="timeline-date">2 Years</p>
+                    <!-- UPDATE: Job description -->
+                    <p>Served as a Secretary for 2 years, handling administrative responsibilities, coordinating team activities, and managing documentation and communication channels.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section - Update your contact information -->
+    <section id="contact" class="contact section-with-sidebar">
+    <div class="vertical-sidebar">
+        <span>MY</span> CONTACT
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <!-- UPDATE: Your email -->
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>dubeyamritanshu8661@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+917979854447</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Phagwara, Punjab, India</p>
+                    </div>
+                </div>
+                <!-- UPDATE: Your social media links - update href attributes -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/kumar20" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/amritanshu8661" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <!-- ADD MORE SOCIAL LINKS: Copy and paste the a element and change the icon and href -->
+                </div>
+            </div>
+            <!-- Update the contact form to ensure visibility -->
+            <div class="contact-form">
+                <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSe4pzrAg9uKl6Yxty7UsPLc4eHRRbRAlHp6Y8kUnfsVg4jm0Q/formResponse" method="post" target="hidden-iframe">
+                    <!-- Update the contact form placeholder text -->
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="entry.1752667180" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="entry.1932457085" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="entry.1884765307" placeholder="Enter subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="entry.839337160" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                <div id="form-status" class="form-status"></div>
+                <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer - Update copyright information -->
+    <footer>
+        <div class="container">
+            <!-- Update the footer copyright -->
+            <div class="footer-content">
+                <p>&copy; 2024 Amritanshu Kumar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal - No need to update this section -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <img id="modal-image" src="/placeholder.svg" alt="Project Image">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div id="experience-modal" class="modal achievement-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <h3>2+ Years of Event Planning Experience</h3>
+                <div class="modal-section">
+                    <h4>Event Planning & Management</h4>
+                    <p>With over 2 years of dedicated experience in event planning and management, I have developed expertise in:</p>
+                    <ul>
+                        <li>Strategic event planning and execution</li>
+                        <li>Budget management and resource allocation</li>
+                        <li>Vendor coordination and negotiation</li>
+                        <li>Risk assessment and contingency planning</li>
+                        <li>Team leadership and coordination</li>
+                        <li>Technical event infrastructure setup</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h4>Key Responsibilities</h4>
+                    <ul>
+                        <li>Led cross-functional teams to deliver successful events</li>
+                        <li>Managed event budgets ranging from ₹50,000 to ₹5,00,000</li>
+                        <li>Coordinated with stakeholders to ensure event objectives were met</li>
+                        <li>Implemented security protocols for large-scale gatherings</li>
+                        <li>Utilized technical knowledge to enhance event experiences</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h4>Professional Growth</h4>
+                    <p>My journey in event management has equipped me with valuable skills in leadership, problem-solving, and crisis management that complement my technical expertise in cybersecurity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Modal -->
+    <div id="events-modal" class="modal achievement-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <h3>50+ Successful Events</h3>
+                <div class="modal-section">
+                    <h4>Featured Events</h4>
+                    <div class="event-cards">
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h5>Techfluence 2023</h5>
+                                <span class="event-tag">Tech Conference</span>
+                            </div>
+                            <p>A flagship technology conference featuring industry leaders, workshops, and networking opportunities for over 2000+ participants.</p>
+                            <div class="event-stats">
+                                <div class="event-stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>2000+ Attendees</span>
+                                </div>
+                                <div class="event-stat">
+                                    <i class="fas fa-calendar-day"></i>
+                                    <span>2 Days</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h5>Hackverse</h5>
+                                <span class="event-tag">Hackathon</span>
+                            </div>
+                            <p>A 48-hour coding marathon where participants developed innovative solutions to real-world cybersecurity challenges.</p>
+                            <div class="event-stats">
+                                <div class="event-stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>500+ Participants</span>
+                                </div>
+                                <div class="event-stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span>48 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h5>Get Placed</h5>
+                                <span class="event-tag">Tech Talk</span>
+                            </div>
+                            <p>An exclusive tech event featuring inspiring talks by some of the most renowned leaders in the industry, offering insights into the future of technology and innovation..</p>
+                            <div class="event-stats">
+                                <div class="event-stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>2000+ Attendees</span>
+                                </div>
+                                <div class="event-stat">
+                                    <i class="fas fa-calendar-day"></i>
+                                    <span>2 Days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Event Categories</h4>
+                    <div class="event-categories">
+                        <div class="event-category">
+                            <i class="fas fa-laptop-code"></i>
+                            <h5>Tech Conferences</h5>
+                            <p>15+ Events</p>
+                        </div>
+                        <div class="event-category">
+                            <i class="fas fa-code"></i>
+                            <h5>Hackathons</h5>
+                            <p>15+ Events</p>
+                        </div>
+                        <div class="event-category">
+                            <i class="fas fa-shield-alt"></i>
+                            <h5>Tech Workshops</h5>
+                            <p>10+ Events</p>
+                        </div>
+                        <div class="event-category">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h5>Educational Seminars</h5>
+                            <p>10+ Events</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Impact & Achievements</h4>
+                    <ul>
+                        <li>Connected 3000+ professionals and students through various events</li>
+                        <li>Facilitated the development of 30+ innovative projects through hackathons</li>
+                        <li>Organized events that led to 50+ job placements and internships</li>
+                        <li>Raised over ₹1,50,000 for charitable causes through fundraising events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button - No need to update this section -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Fix the duplicate back-to-top button in the HTML -->
+    <!-- Replace this section: -->
+    <!-- With this: -->
+    <script src="script.js"></script>
+    
+    <!-- Add the new skills tab functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Skills tabs functionality
+            const skillsTabs = document.querySelectorAll('.skills-tab');
+            const skillsContents = document.querySelectorAll('.skills-tab-content');
+            
+            skillsTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    skillsTabs.forEach(t => t.classList.remove('active'));
+                    skillsContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    document.getElementById(tabId + '-content').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

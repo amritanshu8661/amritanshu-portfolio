@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amritanshu Kumar | Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Resume-specific styles */
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+        }
+        
+        .resume-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .resume-section {
+            margin-bottom: 30px;
+        }
+        
+        .resume-section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .skill-category {
+            margin-bottom: 5px;
+        }
+        
+        .skill-category strong {
+            color: var(--accent-color);
+        }
+        
+        .experience-item, .project-item, .education-item, .certificate-item {
+            margin-bottom: 20px;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .item-title {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .item-date {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .item-subtitle {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .item-description {
+            margin-bottom: 10px;
+        }
+        
+        .item-description ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .item-description li {
+            margin-bottom: 5px;
+        }
+        
+        .achievements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .achievement-item {
+            margin-bottom: 10px;
+        }
+        
+        .achievement-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        @media print {
+            .print-btn, header, footer, .back-to-home {
+                display: none !important;
+            }
+            
+            body {
+                background-color: white !important;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .resume-page {
+                padding-top: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        /* Dark mode specific styles for resume */
+        body.dark-mode .resume-container {
+            background-color: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .resume-header h1 {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .contact-link {
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .contact-link:hover {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .resume-section-title {
+            color: var(--primary-color);
+            border-bottom-color: var(--accent-color);
+        }
+        
+        body.dark-mode .skill-category strong {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .item-title {
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .item-subtitle {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .item-date {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .achievement-title {
+            color: var(--primary-color);
+        }
+
+        /* Animation styles */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Apply animations to elements */
+        .resume-header {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .resume-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .resume-section:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .resume-section:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        .skill-category {
+            opacity: 0;
+            animation: slideInLeft 0.6s ease-out forwards;
+            animation-delay: calc(0.1s * var(--animation-order, 1));
+        }
+
+        .experience-item, .project-item, .education-item {
+            opacity: 0;
+            animation: slideInRight 0.6s ease-out forwards;
+            animation-delay: calc(0.15s * var(--animation-order, 1));
+        }
+
+        .achievement-item {
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+            animation-delay: calc(0.1s * var(--animation-order, 1));
+        }
+
+        /* Hover animations */
+        .contact-link:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
+
+        .print-btn:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* Skill progress bar animation */
+        .skill-progress {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Dark mode adjustments for skill bars */
+        body.dark-mode .skill-progress {
+            background-color: #444;
+        }
+
+        /* Scroll animation observer script will add this class */
+        .animate-in {
+            animation-play-state: running !important;
+        }
+
+        /* Pause animations initially if using intersection observer */
+        .pause-animations .resume-section,
+        .pause-animations .skill-category,
+        .pause-animations .experience-item,
+        .pause-animations .project-item,
+        .pause-animations .education-item,
+        .pause-animations .achievement-item {
+            animation-play-state: paused;
+        }
+
+        /* Certificate styles */
+        .certificate-category {
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .certificate-category-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .certificate-item li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-item li:hover {
+            transform: translateX(5px);
+        }
+
+        .certificate-date, .certificate-verify, .certificate-courses {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+
+        .certificate-date {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .certificate-verify a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .certificate-verify a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .certificate-courses {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Dark mode adjustments for certificates */
+        body.dark-mode .certificate-category-title {
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .certificate-verify a {
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .certificate-verify a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Amritanshu<span>Kumar</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Resume Section -->
+    <section class="resume-page">
+        <div class="container">
+            <div class="resume-container">
+                <div class="resume-header">
+                    <h1>Amritanshu Kumar</h1>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/kumar20" target="_blank" class="contact-link">
+                            <i class="fab fa-linkedin"></i> www.linkedin.com/in/kumar20
+                        </a>
+                        <a href="mailto:dubeyamritanshu8661@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i> dubeyamritanshu8661@gmail.com
+                        </a>
+                        <a href="https://github.com/amritanshu8661" target="_blank" class="contact-link">
+                            <i class="fab fa-github"></i> github.com/amritanshu8661
+                        </a>
+                        <a href="tel:+918235187932" class="contact-link">
+                            <i class="fas fa-phone"></i> +91-8235187932
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">SKILLS</h2>
+                    <div class="skills-list">
+                        <div class="skill-category" style="--animation-order: 1;">
+                            <strong>Languages:</strong> C++, JavaScript, Java, PHP
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-category" style="--animation-order: 2;">
+                            <strong>Frameworks:</strong> HTML and CSS, Bootstrap, NodeJS, React
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-category" style="--animation-order: 3;">
+                            <strong>Tools/Platforms:</strong> Nmap, Wireshark, Linux
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-category" style="--animation-order: 4;">
+                            <strong>Soft Skills:</strong> Problem-Solving Skills, Team Player, Project Management, Adaptability, Leadership
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Internship Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">INTERNSHIP</h2>
+                    <div class="experience-item" style="--animation-order: 1;">
+                        <div class="item-header">
+                            <div class="item-title">Freelancer</div>
+                            <div class="item-date">May-July 2024</div>
+                        </div>
+                        <div class="item-description">
+                            <p>Designed and developed the complete front-end of a client's website, ensuring a user-friendly and visually appealing interface using HTML, CSS, and JavaScript. Delivered end-to-end solutions, including layout design, responsive functionality, and seamless user experience, while meeting all client requirements and expectations.</p>
+                            <p><strong>Tech stacks used:</strong> HTML, CSS, JavaScript</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Full Time Member Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">FULL TIME MEMBER</h2>
+                    <div class="experience-item" style="--animation-order: 2;">
+                        <div class="item-header">
+                            <div class="item-title">Oasis Org. | Secretary</div>
+                            <div class="item-date">May 2023 - April 2025</div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Successfully organized and led the execution of 100+ major events, including technical workshops, cultural festivals, and industry-specific conferences, attended by hundreds of participants.</li>
+                                <li>Spearheaded end-to-end event management, including strategic planning, scheduling, logistics coordination, budgeting, and resource allocation, ensuring each event met its objectives and deadlines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">PROJECTS</h2>
+                    <div class="project-item" style="--animation-order: 1;">
+                        <div class="item-header">
+                            <div class="item-title">Number Tracker – Track the mobile number</div>
+                            <div class="item-date">May-June 2024</div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Built a Python application to track the location of mobile numbers using libraries like phone numbers and geopy.</li>
+                                <li>Retrieved key details such as region, country, and service provider of the mobile number.</li>
+                                <li>Ensured accurate geolocation mapping and user-friendly data display.</li>
+                                <li>Designed the project with scalability for future integration of advanced features like GPS tracking.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item" style="--animation-order: 2;">
+                        <div class="item-header">
+                            <div class="item-title">Secure Chatting Software</div>
+                            <div class="item-date">March 2025</div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Messages are encrypted on the sender's device and decrypted only on the receiver's device, ensuring no third party can read them.</li>
+                                <li>Users can set a timer for messages to automatically delete after being read.</li>
+                                <li>Allows users to share images, documents, and videos with encryption.</li>
+                                <li>Even if the server is compromised, the chats remain encrypted and secure.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificates Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">CERTIFICATES</h2>
+                    
+                    <!-- Technical Certificates -->
+                    <div class="certificate-category">
+                        <h3 class="certificate-category-title">Technical Certificates</h3>
+                        <div class="certificate-item">
+                            <ul>
+                                <li>Red Hat System Administration I (RH124) - May-July 2024</li>
+                                <li>Red Hat System Administration II (RH134) - May-July 2024</li>
+                                <li>Introduction to Cybersecurity Tools & Cyberattacks by IBM Coursera - Nov-Dec 2024</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Non-Technical Certificates -->
+                    <div class="certificate-category">
+                        <h3 class="certificate-category-title">Non-Technical Certificates</h3>
+                        <div class="certificate-item">
+                            <ul>
+                                <li>
+                                    <strong>Learning, Knowledge, and Human Development</strong> - University of Illinois Urbana-Champaign
+                                    <span class="certificate-date">March 24, 2023</span>
+                                    <span class="certificate-verify">Verify: <a href="https://coursera.org/verify/FYAWY6BBRUV7" target="_blank">coursera.org/verify/FYAWY6BBRUV7</a></span>
+                                </li>
+                                <li>
+                                    <strong>Learn English: Beginning Grammar Specialization</strong> - University of California, Irvine
+                                    <span class="certificate-date">May 12, 2024</span>
+                                    <span class="certificate-courses">Courses: Word Forms and Simple Present Tense; Questions, Present Progressive and Future Tenses; Simple Past Tense</span>
+                                    <span class="certificate-verify">Verify: <a href="https://coursera.org/verify/specialization/53UJMVPVMZAY" target="_blank">coursera.org/verify/specialization/53UJMVPVMZAY</a></span>
+                                </li>
+                                <li>
+                                    <strong>Generative AI for Human Resources (HR) Professionals Specialization</strong> - IBM
+                                    <span class="certificate-date">February 24, 2025</span>
+                                    <span class="certificate-courses">Courses: Generative AI: Introduction and Applications; Generative AI: Prompt Engineering Basics; Generative AI: Advance Your Human Resources (HR) Career</span>
+                                    <span class="certificate-verify">Verify: <a href="https://coursera.org/verify/specialization/8F30P2VQQ567" target="_blank">coursera.org/verify/specialization/8F30P2VQQ567</a></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">ACHIEVEMENTS</h2>
+                    <div class="achievements-list">
+                        <div class="achievement-item" style="--animation-order: 1;">
+                            <div class="achievement-title">Project Development:</div>
+                            <p>Delivered a responsive, user-centric website for a client, utilizing HTML, CSS, and JavaScript to create an intuitive and visually appealing design.</p>
+                        </div>
+                        
+                        <div class="achievement-item" style="--animation-order: 2;">
+                            <div class="achievement-title">Hackathons:</div>
+                            <p>Participated in 10+ Hackathons, showcasing advanced problem-solving abilities and technical expertise in competitive coding environments.</p>
+                        </div>
+                        
+                        <div class="achievement-item" style="--animation-order: 3;">
+                            <div class="achievement-title">Event Management:</div>
+                            <p>Spearheaded the successful organization of 100+ high-profile events as Secretary of OASISLPU, engaging over 10,000 participants and ensuring seamless execution.</p>
+                        </div>
+                        
+                        <div class="achievement-item" style="--animation-order: 4;">
+                            <div class="achievement-title">Leadership:</div>
+                            <p>Directed a cross-functional team of 50+ members in the strategic planning and execution of large-scale events, fostering a collaborative environment and driving productivity.</p>
+                        </div>
+                        
+                        <div class="achievement-item" style="--animation-order: 5;">
+                            <div class="achievement-title">Problem-Solving:</div>
+                            <p>Addressed and resolved unforeseen challenges during events, ensuring smooth operations and consistently achieving high participant satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Section -->
+                <div class="resume-section">
+                    <h2 class="resume-section-title">EDUCATION</h2>
+                    <div class="education-item" style="--animation-order: 1;">
+                        <div class="item-title">Lovely Professional University</div>
+                        <div class="item-subtitle">Punjab, India</div>
+                        <p>Bachelor of Technology - Computer Science and Engineering; August 2022</p>
+                    </div>
+                    
+                    <div class="education-item" style="--animation-order: 2;">
+                        <div class="item-title">P.T.D.U College</div>
+                        <div class="item-subtitle">Khajuria, Bihar</div>
+                        <p>Intermediate; Percentage: 68% | April 2018 - March 2020</p>
+                    </div>
+                    
+                    <div class="education-item" style="--animation-order: 3;">
+                        <div class="item-title">Arpa International School</div>
+                        <div class="item-subtitle">Madhopur, Bihar</div>
+                        <p>Matriculation; Percentage: 69% | April 2016 - March 2018</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-to-home">
+                <a href="index.html" class="btn primary-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Amritanshu Kumar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add pause-animations class initially
+            document.body.classList.add('pause-animations');
+            
+            // Animate skill progress bars
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.skill-progress-bar');
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                });
+            }, 500);
+            
+            // Set up intersection observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll('.resume-section, .skill-category, .experience-item, .project-item, .education-item, .achievement-item');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Remove pause class after a short delay to allow observer to set up
+            setTimeout(() => {
+                document.body.classList.remove('pause-animations');
+            }, 100);
+            
+            // Add floating animation to print button
+            const printBtn = document.querySelector('.print-btn');
+            let floatY = 0;
+            let floatDirection = 1;
+            
+            function floatButton() {
+                floatY += 0.1 * floatDirection;
+                
+                if (floatY > 5) floatDirection = -1;
+                if (floatY < 0) floatDirection = 1;
+                
+                printBtn.style.transform = `translateY(${floatY}px)`;
+                requestAnimationFrame(floatButton);
+            }
+            
+            floatButton();
+        });
+    </script>
+</body>
+</html>

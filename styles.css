@@ -1,0 +1,2460 @@
+/*
+==============================================
+PORTFOLIO STYLESHEET
+==============================================
+
+HOW TO UPDATE:
+1. Color Scheme: Edit the CSS variables in the :root section
+2. Typography: Change font-family properties
+3. Spacing: Adjust padding and margin values
+4. Animations: Modify animation durations and effects
+5. Layout: Adjust width, height, and grid properties
+
+*/
+
+/* 
+==============================================
+COLOR SCHEME & THEME VARIABLES
+==============================================
+Edit these variables to change the color scheme of your portfolio
+*/
+:root {
+  /* Light Theme Colors - CUSTOMIZE THESE */
+  --primary-color-light: #ff6b00; /* Changed to orange */
+  --secondary-color-light: #ff8c00; /* Changed to lighter orange */
+  --accent-color-light: #000000; /* Changed to black */
+  --background-color-light: #ffffff; /* Main background */
+  --surface-color-light: #f8f9fa; /* Secondary background */
+  --text-color-light: #333333; /* Main text color */
+  --text-secondary-light: #555555; /* Secondary text color */
+  --border-color-light: #dddddd; /* Border color */
+  --card-bg-light: #ffffff; /* Card background */
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+
+  /* Dark Theme Colors - CUSTOMIZE THESE */
+  --primary-color-dark: #ff8c00; /* Changed to orange */
+  --secondary-color-dark: #ff6b00; /* Changed to darker orange */
+  --accent-color-dark: #333333; /* Changed to dark gray */
+  --background-color-dark: #121212; /* Main background (dark mode) */
+  --surface-color-dark: #1e1e1e; /* Secondary background (dark mode) */
+  --text-color-dark: #f0f0f0; /* Main text color (dark mode) */
+  --text-secondary-dark: #b0b0b0; /* Secondary text color (dark mode) */
+  --border-color-dark: #333333; /* Border color (dark mode) */
+  --card-bg-dark: #2d2d2d; /* Card background (dark mode) */
+  --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow effect (dark mode) */
+
+  /* Card Backgrounds */
+  --card-dark-bg: #2d2d2d;
+  --card-light-bg: #f0f0f0;
+
+  /* Default to light theme - DO NOT CHANGE THESE */
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --accent-color: var(--accent-color-light);
+  --background-color: var(--background-color-light);
+  --surface-color: var(--surface-color-light);
+  --text-color: var(--text-color-light);
+  --text-secondary: var(--text-secondary-light);
+  --border-color: var(--border-color-light);
+  --card-bg: var(--card-bg-light);
+  --shadow: var(--shadow-light);
+
+  /* Animation Speed - CUSTOMIZE THIS */
+  --transition: all 0.3s ease;
+}
+
+/* Replace the existing vertical-sidebar CSS with this updated version */
+.vertical-sidebar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-lr;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  padding: 30px 0;
+  font-weight: 700;
+  z-index: 1;
+  animation: fadeInLeft 1s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.vertical-sidebar.right {
+  left: auto;
+  right: 0;
+}
+
+.vertical-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.vertical-sidebar span {
+  color: var(--accent-color);
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+.section-with-sidebar {
+  position: relative;
+  padding-left: 80px;
+}
+
+.section-with-sidebar.right-sidebar {
+  padding-left: 0;
+  padding-right: 80px;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* Replace the social-sidebar CSS with this updated version */
+.social-sidebar {
+  position: fixed;
+  left: 30px;
+  top: 50%; /* Position it in the middle of the viewport height */
+  transform: translateY(-50%); /* Center it vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.social-sidebar .social-link {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-sidebar .social-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Add tooltip styles */
+.social-sidebar .social-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+  top: 50%;
+}
+
+/* Show tooltip on hover */
+.social-sidebar .social-link:hover::after {
+  opacity: 1;
+  visibility: visible;
+  left: 60px;
+}
+
+.social-sidebar .social-link:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-5px) scale(1.2) rotate(360deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-sidebar .social-link i {
+  transition: all 0.3s ease;
+}
+
+.social-sidebar .social-link:hover i {
+  transform: scale(1.2);
+  animation: pulse 1s infinite alternate;
+}
+
+.social-sidebar .vertical-line {
+  width: 2px;
+  height: 50px;
+  background-color: var(--primary-color);
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-sidebar .vertical-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: rgba(255, 255, 255, 0.5);
+  animation: line-animation 2s infinite;
+}
+
+@keyframes line-animation {
+  0% {
+    top: -30%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+/* Add specific hover effects for each social platform */
+.social-sidebar .social-link:nth-child(1):hover {
+  background-color: #0077b5; /* LinkedIn blue */
+}
+
+.social-sidebar .social-link:nth-child(2):hover {
+  background-color: #333333; /* GitHub dark */
+}
+
+.social-sidebar .social-link:nth-child(3):hover {
+  background-color: #1da1f2; /* Twitter blue */
+}
+
+/* Ensure the sidebar is hidden on mobile */
+@media (max-width: 768px) {
+  .social-sidebar {
+    display: none;
+  }
+}
+
+/* 
+==============================================
+BASE STYLES
+==============================================
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* CUSTOMIZE: Change the font family here */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles - DO NOT CHANGE */
+body.dark-mode {
+  --primary-color: var(--primary-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --background-color: var(--background-color-dark);
+  --surface-color: var(--surface-color-dark);
+  --text-color: var(--text-color-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --border-color: var(--border-color-dark);
+  --card-bg: var(--card-dark-bg);
+  --shadow: var(--shadow-dark);
+}
+
+/* Light Mode Styles */
+body.light-mode {
+  --card-bg: var(--card-light-bg);
+}
+
+/* CUSTOMIZE: Change the container width here */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* CUSTOMIZE: Change section padding here */
+section {
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* CUSTOMIZE: Change heading size here */
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* CUSTOMIZE: Change underline style here */
+.underline {
+  height: 4px;
+  width: 70px;
+  background: var(--accent-color);
+  margin: 0 auto;
+}
+
+/* 
+==============================================
+BUTTON STYLES
+==============================================
+CUSTOMIZE: Change button styles here
+*/
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.accent-btn {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.accent-btn:hover {
+  background-color: #e67100;
+  transform: translateY(-3px);
+}
+
+/* 
+==============================================
+HEADER STYLES
+==============================================
+*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  padding: 15px 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CUSTOMIZE: Change logo size and color here */
+.logo h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--accent-color);
+  transform: rotate(30deg);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--text-color);
+  transition: var(--transition);
+}
+
+/* 
+==============================================
+HERO SECTION
+==============================================
+CUSTOMIZE: Change hero section styles here
+*/
+.hero {
+  padding-top: 150px;
+  padding-bottom: 80px;
+  background: linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%);
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+/* CUSTOMIZE: Change hero title size here */
+.hero-content h1 {
+  font-size: 3rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.hero-content span {
+  color: var(--primary-color);
+}
+
+.hero-content h2 {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--text-secondary);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CUSTOMIZE: Change profile image size here */
+.profile-img-placeholder {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: var(--surface-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow);
+  overflow: hidden; /* Add this to ensure the image stays within the circular container */
+}
+
+.profile-img-placeholder i {
+  font-size: 150px;
+  color: var(--text-secondary);
+}
+
+/* CUSTOMIZE: Use this for a real profile image */
+.profile-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* Adjust this value to move the image up and show the head properly */
+  border-radius: 50%;
+}
+
+/* 
+==============================================
+ABOUT SECTION
+==============================================
+*/
+.about {
+  background-color: var(--background-color);
+}
+
+/* Update the about section styles */
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-left: 20px;
+}
+
+.about-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.about-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.about-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.detail-item h3 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.detail-item p {
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.cert-btn {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive adjustments for about section */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-columns {
+    flex-direction: column;
+  }
+
+  .about-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-columns {
+    flex-direction: column;
+  }
+
+  .about-column {
+    width: 100%;
+  }
+}
+
+/* 
+==============================================
+SKILLS SECTION
+==============================================
+CUSTOMIZE: Change skill bar styles here
+*/
+/* 
+==============================================
+SKILLS SECTION - ENHANCED WITH ANIMATIONS
+==============================================
+*/
+/* Update the skills section colors to ensure visibility in both modes */
+.skills-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 80px 0;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden; /* Prevent animations from causing horizontal scroll */
+}
+
+/* Add animated background pattern */
+.skills-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 10%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 10%);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  z-index: 0;
+  animation: patternMove 60s linear infinite;
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+/* Ensure dark/light mode transitions for skills section */
+body.light-mode .skills-container {
+  background-color: #f5f5f5; /* Light background in light mode */
+  color: #333333; /* Dark text in light mode */
+}
+
+body.light-mode .skills-container::before {
+  background-image: radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.03) 0%, transparent 10%),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.03) 0%, transparent 10%);
+}
+
+body.dark-mode .skills-container {
+  background-color: #121212; /* Dark background in dark mode */
+  color: #ffffff; /* Light text in dark mode */
+}
+
+/* Ensure skills text is always visible */
+.skills-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+body.light-mode .skills-description {
+  color: #555555; /* Dark text in light mode */
+}
+
+body.dark-mode .skills-description {
+  color: #b0b0b0; /* Light text in dark mode */
+}
+
+/* Improve tab visibility and add animation */
+.skills-tab {
+  padding: 12px 30px;
+  background-color: transparent;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.skills-tab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.skills-tab:hover::before {
+  width: 100%;
+}
+
+.skills-tab:hover {
+  color: white !important;
+}
+
+body.light-mode .skills-tab {
+  color: #333333; /* Dark text in light mode */
+}
+
+body.dark-mode .skills-tab {
+  color: #ffffff; /* Light text in dark mode */
+}
+
+.skills-tab.active {
+  background-color: var(--accent-color);
+  color: #ffffff !important; /* Always white text when active */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+}
+
+.skills-tab.active::before {
+  width: 100%;
+}
+
+.skills-tabs {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Update the skills-sidebar to match the new vertical-sidebar style */
+.skills-sidebar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-lr;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  padding: 30px 0;
+  font-weight: 700;
+  z-index: 1;
+  animation: fadeInLeft 1s ease-out;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.skills-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+body.light-mode .skills-sidebar {
+  color: #333333; /* Dark text in light mode */
+}
+
+body.dark-mode .skills-sidebar {
+  color: #ffffff; /* Light text in dark mode */
+}
+
+.skills-content-wrapper {
+  padding-left: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-header {
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skills-header h2 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+body.light-mode .skills-header h2 {
+  color: #333333; /* Dark text in light mode */
+}
+
+body.dark-mode .skills-header h2 {
+  color: #ffffff; /* Light text in dark mode */
+}
+
+/* Animated skill icons */
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+/* Find the skill-icon styles and update them to fix the black line issue */
+
+/* Replace or add these styles to fix the issue with the skill labels */
+.skill-icon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: visible;
+  animation: fadeInScale 0.5s ease-out backwards;
+  margin-bottom: 40px; /* Add space below the icon to accommodate the label */
+}
+
+.skill-icon::after {
+  content: attr(data-skill);
+  position: absolute;
+  bottom: -30px; /* Position the label below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 10;
+  /* Remove the visibility:hidden to make labels always visible */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for better appearance */
+  width: auto; /* Ensure the width is based on content */
+  min-width: max-content; /* Ensure the label doesn't break into multiple lines */
+}
+
+/* Remove the ::before pseudo-element that might be causing the line */
+.skill-icon::before {
+  content: none; /* Remove any content that might be creating the line */
+}
+
+/* If you still want to show a tooltip on hover, create a new pseudo-element */
+.skill-icon:hover::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--accent-color) transparent;
+  z-index: 10;
+}
+
+/* Update the hover state to not affect the label position */
+.skill-icon:hover::after {
+  bottom: -30px; /* Keep the same position on hover */
+  opacity: 1;
+}
+
+.skill-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon:hover::before {
+  opacity: 1;
+}
+
+body.light-mode .skill-icon {
+  background-color: #ffffff; /* Light background in light mode */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .skill-icon {
+  background-color: #2d2d2d; /* Dark background in dark mode */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon img {
+  width: 60%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.skill-icon i {
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure GitHub icon is visible in both light and dark modes */
+body.light-mode .skill-icon .fa-github {
+  color: #333333;
+}
+
+body.dark-mode .skill-icon .fa-github {
+  color: #ffffff;
+}
+
+.skill-icon:hover i {
+  transform: scale(1.1);
+}
+
+.skills-tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.skills-tab-content.active {
+  display: block;
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 992px) {
+  .skills-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .skills-description {
+    font-size: 1rem;
+  }
+
+  .skills-icons {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 60px 0;
+  }
+
+  .skills-sidebar {
+    display: none;
+  }
+
+  .skills-content-wrapper {
+    padding-left: 0;
+  }
+
+  .skills-header h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .skills-description {
+    text-align: center;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .skills-tabs {
+    flex-wrap: wrap;
+  }
+
+  .skills-tab {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .skill-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-icon i {
+    font-size: 2rem;
+  }
+
+  .skills-icons {
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-container {
+    padding: 40px 0;
+  }
+
+  .skills-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .skills-description {
+    font-size: 0.9rem;
+  }
+
+  .skills-tab {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
+  .skill-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .skill-icon i {
+    font-size: 1.8rem;
+  }
+
+  .skills-icons {
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/* 
+==============================================
+PROJECTS SECTION
+==============================================
+CUSTOMIZE: Change project card styles here
+*/
+.projects {
+  background-color: var(--background-color);
+}
+
+.project-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  background-color: var(--surface-color);
+  border: none;
+  border-radius: 30px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-img {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.view-project {
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .view-project {
+  transform: translateY(0);
+}
+
+.project-info {
+  padding: 20px;
+}
+
+.project-info h3 {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  margin-bottom: 15px;
+  color: var(--text-secondary);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.project-tech span {
+  padding: 5px 10px;
+  background-color: var(--surface-color);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+}
+
+.project-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  color: var(--accent-color);
+}
+
+/* 
+==============================================
+EXPERIENCE SECTION
+==============================================
+CUSTOMIZE: Change timeline styles here
+*/
+.experience {
+  background-color: var(--surface-color);
+}
+
+/* Update the experience section styles */
+.experience .container {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background-color: var(--primary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  left: 0;
+  margin-bottom: 30px;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  top: 15px;
+  right: -10px;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.timeline-date {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* 
+==============================================
+CONTACT SECTION
+==============================================
+CUSTOMIZE: Change contact form styles here
+*/
+.contact {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Update the contact section header color */
+.contact .section-header h2 {
+  color: var(--primary-color);
+}
+
+/* Update contact item text colors */
+.contact-item h3 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.contact-item p {
+  color: var(--text-secondary);
+}
+
+/* Update form input and textarea styles for light theme */
+.form-group label {
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+}
+
+/* Update the contact section styles */
+.contact .container {
+  position: relative;
+}
+
+/* CHANGE THIS LINE - Remove the white color for the section header */
+.contact .section-header h2 {
+  color: var(--primary-color);
+}
+
+.contact-content {
+  display: flex;
+  gap: 50px;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* CHANGE THESE LINES - Update text colors for contact items */
+.contact-item h3 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.contact-item p {
+  color: var(--text-secondary);
+}
+
+/* CHANGE THESE LINES - Update form label colors */
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-color); /* Use the text color variable */
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* CHANGE THESE LINES - Update form input colors */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--primary-color-light); /* Add a visible border */
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #ffffff; /* White background for visibility */
+  color: #333333; /* Dark text for visibility */
+  transition: var(--transition);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #777777; /* Darker placeholder text for visibility */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #ffffff; /* Keep white background on focus */
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.2); /* Add focus ring */
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background-color: var(--primary-color-light); /* Use primary orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary-color-light); /* Use secondary orange */
+  transform: translateY(-3px);
+}
+
+.form-status {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form-status.success {
+  background-color: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+
+.form-status.error {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+}
+
+.contact-form iframe {
+  width: 100%;
+  min-height: 700px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  background-color: var(--card-bg);
+}
+
+/* Responsive adjustments for the iframe */
+@media (max-width: 768px) {
+  .contact-form iframe {
+    min-height: 800px;
+  }
+}
+
+/* 
+==============================================
+FOOTER
+==============================================
+CUSTOMIZE: Change footer styles here
+*/
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* 
+==============================================
+MODAL
+==============================================
+*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: var(--shadow);
+  animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-modal {
+  color: var(--text-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: var(--accent-color);
+}
+
+.modal-body {
+  padding: 20px 0;
+}
+
+.modal-body img {
+  width: 100%;
+  max-height: 500px; /* Add max-height to prevent overly large images */
+  border-radius: 5px;
+  margin-bottom: 20px;
+  object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
+
+.modal-body h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.modal-body p {
+  color: var(--text-secondary);
+}
+
+/* 
+==============================================
+BACK TO TOP BUTTON
+==============================================
+*/
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-5px);
+}
+
+/* 
+==============================================
+CERTIFICATIONS PAGE
+==============================================
+*/
+.certifications-page {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: var(--background-color);
+}
+
+.certifications-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.certification-card {
+  display: flex;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.certification-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2.5rem;
+  padding: 20px;
+}
+
+.certification-details {
+  padding: 25px;
+  flex: 1;
+}
+
+.certification-details h3 {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.certification-issuer {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.certification-date {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.certification-description {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.certification-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.certification-skills span {
+  padding: 5px 10px;
+  background-color: var(--surface-color);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.certification-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.back-to-home {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cert-btn {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 
+==============================================
+RESPONSIVE STYLES
+==============================================
+CUSTOMIZE: Change responsive breakpoints here
+*/
+@media (max-width: 992px) {
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    margin-bottom: 50px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0;
+    padding-left: 70px;
+    padding-right: 0;
+  }
+
+  .timeline-item:nth-child(even) {
+    left: 0;
+  }
+
+  .timeline-dot {
+    left: 20px;
+    right: auto;
+  }
+
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 20px;
+  }
+}
+
+/* Responsive adjustments for the new layout */
+@media (max-width: 992px) {
+  .vertical-sidebar {
+    height: 120px;
+    font-size: 1rem;
+    width: 40px;
+  }
+
+  .section-with-sidebar {
+    padding-left: 50px;
+  }
+
+  .section-with-sidebar.right-sidebar {
+    padding-left: 0;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: var(--background-color);
+    width: 100%;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .about-details {
+    flex-direction: column;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .vertical-sidebar {
+    display: none;
+  }
+
+  .section-with-sidebar,
+  .section-with-sidebar.right-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .certification-card {
+    flex-direction: column;
+  }
+
+  .certification-icon {
+    min-width: 100%;
+    padding: 30px;
+  }
+}
+
+/* 
+==============================================
+ANIMATION CLASSES
+==============================================
+CUSTOMIZE: Change animation styles here
+*/
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-in-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-in-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 
+==============================================
+ACHIEVEMENT CARDS
+==============================================
+*/
+.achievement-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.achievement-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  min-width: 280px;
+  flex: 1;
+  max-width: 450px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-icon {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 123, 0, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.achievement-icon i {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+/* Fix achievement card text visibility in both modes */
+body.light-mode .achievement-card {
+  background-color: var(--primary-color);
+}
+
+body.dark-mode .achievement-card {
+  background-color: var(--primary-color-dark);
+}
+
+.achievement-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-text {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 5px 0 0 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+/* Make the arrow icon more visible */
+.achievement-arrow {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
+
+/* Dark mode specific styles */
+/* Update the achievement card background to ensure better contrast */
+body.light-mode .achievement-card {
+  background-color: var(--primary-color);
+}
+
+body.dark-mode .achievement-card {
+  background-color: var(--primary-color-dark);
+}
+
+body.light-mode .achievement-number,
+body.dark-mode .achievement-number {
+  color: var(--accent-color);
+}
+
+body.light-mode .achievement-text,
+body.dark-mode .achievement-text {
+  color: #ffffff;
+}
+
+/* Responsive styles for achievement cards */
+@media (max-width: 768px) {
+  .achievement-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .achievement-card {
+    width: 100%;
+  }
+}
+
+/* 
+==============================================
+ACHIEVEMENT MODALS
+==============================================
+*/
+.achievement-modal .modal-content {
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.achievement-modal .modal-body {
+  padding: 30px;
+  color: var(--text-color);
+}
+
+.achievement-modal h3 {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-section {
+  margin-bottom: 30px;
+}
+
+.modal-section h4 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 8px;
+}
+
+.modal-section p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.modal-section ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.modal-section ul li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* Event Cards */
+.event-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.event-card {
+  background-color: var(--surface-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.event-header h5 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.event-tag {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.event-card p {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.event-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+}
+
+.event-stat i {
+  color: var(--accent-color);
+}
+
+/* Event Categories */
+.event-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.event-category {
+  background-color: var(--surface-color);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 150px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.event-category:hover {
+  transform: translateY(-5px);
+}
+
+.event-category i {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.event-category h5 {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.event-category p {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Responsive styles for modals */
+@media (max-width: 768px) {
+  .event-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .event-categories {
+    gap: 15px;
+  }
+
+  .event-category {
+    width: calc(50% - 15px);
+    padding: 15px;
+  }
+}
+
+/* 
+==============================================
+CERTIFICATIONS PAGE - ENHANCED
+==============================================
+*/
+.certifications-page {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: var(--background-color);
+}
+
+/* Certification Categories */
+.certification-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.cert-category-btn {
+  padding: 10px 25px;
+  background-color: var(--surface-color);
+  border: none;
+  border-radius: 30px;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-category-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.cert-category-btn::before {
+  width: 100%;
+}
+
+.cert-category-btn:hover {
+  color: white;
+}
+
+.cert-category-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.certifications-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.certification-card {
+  display: flex;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.certification-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2.5rem;
+  padding: 20px;
+}
+
+.certification-details {
+  padding: 25px;
+  flex: 1;
+}
+
+.certification-details h3 {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.certification-issuer {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.certification-date {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.certification-description {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.certification-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.certification-skills span {
+  padding: 5px 10px;
+  background-color: var(--surface-color);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.certification-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.back-to-home {
+  text-align: center;
+  margin-top: 30px;
+}
