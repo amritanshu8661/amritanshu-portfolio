@@ -199,34 +199,37 @@ const filterProjects = () => {
   const filterButtons = document.querySelectorAll(".filter-btn")
   const projectCards = document.querySelectorAll(".project-card")
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Remove active class from all buttons
-      filterButtons.forEach((btn) => btn.classList.remove("active"))
+  // Only set up filtering if we have filter buttons (they exist on the projects page)
+  if (filterButtons.length > 0) {
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove active class from all buttons
+        filterButtons.forEach((btn) => btn.classList.remove("active"))
 
-      // Add active class to clicked button
-      button.classList.add("active")
+        // Add active class to clicked button
+        button.classList.add("active")
 
-      const filter = button.getAttribute("data-filter")
+        const filter = button.getAttribute("data-filter")
 
-      // Filter projects
-      projectCards.forEach((card) => {
-        if (filter === "all" || card.getAttribute("data-category") === filter) {
-          card.style.display = "block"
-          setTimeout(() => {
-            card.style.opacity = "1"
-            card.style.transform = "translateY(0)"
-          }, 100)
-        } else {
-          card.style.opacity = "0"
-          card.style.transform = "translateY(20px)"
-          setTimeout(() => {
-            card.style.display = "none"
-          }, 300)
-        }
+        // Filter projects
+        projectCards.forEach((card) => {
+          if (filter === "all" || card.getAttribute("data-category") === filter) {
+            card.style.display = "block"
+            setTimeout(() => {
+              card.style.opacity = "1"
+              card.style.transform = "translateY(0)"
+            }, 100)
+          } else {
+            card.style.opacity = "0"
+            card.style.transform = "translateY(20px)"
+            setTimeout(() => {
+              card.style.display = "none"
+            }, 300)
+          }
+        })
       })
     })
-  })
+  }
 }
 
 // ===============================================
@@ -429,4 +432,59 @@ document.addEventListener("DOMContentLoaded", () => {
   animateOnScroll()
   typingEffect()
   setupAchievementModals() // Initialize achievement modals
+
+  // ===============================================
+  // TESTIMONIALS SLIDER
+  // ===============================================
+  const setupTestimonialsSlider = () => {
+    const slider = document.querySelector(".testimonials-slider")
+    const dots = document.querySelectorAll(".testimonial-dots .dot")
+
+    if (slider && dots.length > 0) {
+      // Set up dots functionality for mobile view
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          // Calculate the scroll position
+          const testimonialCards = document.querySelectorAll(".testimonial-card")
+          if (testimonialCards.length > index) {
+            const cardWidth = testimonialCards[0].offsetWidth
+            const scrollPosition = index * (cardWidth + 20) // 20px is the margin-right
+
+            // Scroll to the position
+            slider.scrollTo({
+              left: scrollPosition,
+              behavior: "smooth",
+            })
+
+            // Update active dot
+            dots.forEach((d) => d.classList.remove("active"))
+            dot.classList.add("active")
+          }
+        })
+      })
+
+      // Update dots on scroll
+      slider.addEventListener("scroll", () => {
+        const scrollPosition = slider.scrollLeft
+        const testimonialCards = document.querySelectorAll(".testimonial-card")
+
+        if (testimonialCards.length > 0) {
+          const cardWidth = testimonialCards[0].offsetWidth
+          const activeIndex = Math.round(scrollPosition / (cardWidth + 20)) // 20px is the margin-right
+
+          // Update active dot
+          dots.forEach((dot, index) => {
+            if (index === activeIndex) {
+              dot.classList.add("active")
+            } else {
+              dot.classList.remove("active")
+            }
+          })
+        }
+      })
+    }
+  }
+
+  // Add the new function to the initialization
+  setupTestimonialsSlider()
 })

@@ -54,7 +54,7 @@ Edit these variables to change the color scheme of your portfolio
   --background-color: var(--background-color-light);
   --surface-color: var(--surface-color-light);
   --text-color: var(--text-color-light);
-  --text-secondary: var(--text-secondary-light);
+  --text_secondary: var(--text-secondary-light);
   --border-color: var(--border-color-light);
   --card-bg: var(--card-bg-light);
   --shadow: var(--shadow-light);
@@ -887,7 +887,7 @@ body.dark-mode .skills-header h2 {
 
 /* Find the skill-icon styles and update them to fix the black line issue */
 
-/* Replace or add these styles to fix the issue with the skill labels */
+/* Replace these styles to fix the issue with the skill labels */
 .skill-icon {
   position: relative;
   width: 100px;
@@ -915,18 +915,21 @@ body.dark-mode .skills-header h2 {
   font-size: 0.9rem;
   white-space: nowrap;
   z-index: 10;
-  /* Remove the visibility:hidden to make labels always visible */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for better appearance */
-  width: auto; /* Ensure the width is based on content */
-  min-width: max-content; /* Ensure the label doesn't break into multiple lines */
+  opacity: 0; /* Hide by default */
+  visibility: hidden; /* Hide by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: auto;
+  min-width: max-content;
 }
 
-/* Remove the ::before pseudo-element that might be causing the line */
-.skill-icon::before {
-  content: none; /* Remove any content that might be creating the line */
+/* Show label on hover */
+.skill-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* If you still want to show a tooltip on hover, create a new pseudo-element */
+/* Add a small arrow pointing to the icon */
 .skill-icon:hover::before {
   content: "";
   position: absolute;
@@ -937,12 +940,8 @@ body.dark-mode .skills-header h2 {
   border-style: solid;
   border-color: transparent transparent var(--accent-color) transparent;
   z-index: 10;
-}
-
-/* Update the hover state to not affect the label position */
-.skill-icon:hover::after {
-  bottom: -30px; /* Keep the same position on hover */
   opacity: 1;
+  visibility: visible;
 }
 
 .skill-icon::before {
@@ -993,11 +992,20 @@ body.dark-mode .skill-icon {
 
 /* Ensure GitHub icon is visible in both light and dark modes */
 body.light-mode .skill-icon .fa-github {
-  color: #333333;
+  color: #000000; /* Darker black for better contrast */
+  font-size: 2.8rem; /* Slightly larger */
 }
 
 body.dark-mode .skill-icon .fa-github {
-  color: #ffffff;
+  color: #ffffff; /* White for dark mode */
+  font-size: 2.8rem; /* Slightly larger */
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* Add subtle shadow for better visibility */
+}
+
+/* Add this to make all skill icons more visible on hover */
+.skill-icon:hover i {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
 }
 
 .skill-icon:hover i {
@@ -1154,16 +1162,166 @@ CUSTOMIZE: Change project card styles here
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Add responsive adjustments for the projects grid */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add these styles for the flip card effect */
+/* Find the .project-card style and update it */
 .project-card {
-  background-color: var(--card-bg);
+  background-color: transparent;
+  border-radius: 10px;
+  height: 450px; /* Set a fixed height for all cards */
+  perspective: 1000px; /* 3D effect */
+  margin-bottom: 30px;
+}
+
+/* Add these new styles for the flip card inner container */
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+}
+
+/* Add hover effect to flip the card */
+.project-card:hover .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back sides */
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+}
+
+/* Style the front side */
+.project-card-front {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the back side */
+.project-card-back {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Style the content on the back of the card */
+.project-back-content {
+  text-align: center;
+}
+
+.project-back-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.project-back-content p {
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Style the links on the back of the card */
+.project-card-back .project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card-back .project-link {
+  background-color: white;
+  color: var(--primary-color);
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  width: 80%;
+  justify-content: center;
+}
+
+.project-card-back .project-link:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Update the project image styles */
+.project-img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Update the project filtering to work with the new card structure */
+.filter-btn.active + .projects-grid .project-card[data-category]:not([data-category="all"]) {
+  display: block;
+}
+
+/* Make sure the project cards are responsive */
+@media (max-width: 992px) {
+  .project-card {
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    height: 380px;
+  }
 }
 
 .project-card:hover {
@@ -1227,6 +1385,9 @@ CUSTOMIZE: Change project card styles here
 
 .project-info {
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-info h3 {
@@ -1238,6 +1399,7 @@ CUSTOMIZE: Change project card styles here
 .project-info p {
   margin-bottom: 15px;
   color: var(--text-secondary);
+  flex-grow: 1;
 }
 
 .project-tech {
@@ -1258,6 +1420,7 @@ CUSTOMIZE: Change project card styles here
 .project-links {
   display: flex;
   gap: 15px;
+  margin-top: auto;
 }
 
 .project-link {
@@ -2457,4 +2620,258 @@ CERTIFICATIONS PAGE - ENHANCED
 .back-to-home {
   text-align: center;
   margin-top: 30px;
+}
+
+/* 
+==============================================
+TESTIMONIALS SECTION
+==============================================
+*/
+.testimonials {
+  background-color: var(--background-color);
+  padding: 80px 0;
+}
+
+.testimonials-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.testimonials-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.testimonial-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  margin-right: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.testimonial-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  font-style: italic;
+  position: relative;
+}
+
+.testimonial-content p::before,
+.testimonial-content p::after {
+  content: '"';
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.testimonial-info h4 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.testimonial-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* Responsive styles for testimonials */
+@media (min-width: 768px) {
+  .testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    overflow: visible;
+  }
+
+  .testimonial-card {
+    margin-right: 0;
+  }
+
+  .testimonial-dots {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonial-card {
+    flex: 0 0 90%;
+    min-width: 90%;
+  }
+}
+
+/* 
+==============================================
+PROJECTS PAGE
+==============================================
+*/
+.projects-page {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: var(--background-color);
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 20px auto 40px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.projects-preview {
+  background-color: var(--background-color);
+  padding: 80px 0;
+}
+
+.projects-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.projects-preview-grid.centered {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-preview-grid.centered .project-card {
+  flex: 0 0 350px;
+  max-width: 350px;
+}
+
+.view-all-projects {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.view-all-projects .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+}
+
+.back-to-home {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.back-to-home .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Active navigation link */
+.nav-links a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Animation for project cards on the projects page */
+.projects-page .project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  animation-delay: calc(0.1s * var(--card-index, 1));
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animation delay to each card */
+.projects-page .project-card:nth-child(1) {
+  --card-index: 1;
+}
+.projects-page .project-card:nth-child(2) {
+  --card-index: 2;
+}
+.projects-page .project-card:nth-child(3) {
+  --card-index: 3;
+}
+.projects-page .project-card:nth-child(4) {
+  --card-index: 4;
+}
+.projects-page .project-card:nth-child(5) {
+  --card-index: 5;
+}
+.projects-page .project-card:nth-child(6) {
+  --card-index: 6;
 }
