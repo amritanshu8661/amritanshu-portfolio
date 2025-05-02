@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amritanshu Kumar | Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/kumar20" target="_blank" class="social-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/amritanshu8661" target="_blank" class="social-link" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Amritanshu<span>Kumar</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="projects-page">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <div class="underline"></div>
+                <p class="section-description">Explore my portfolio of projects showcasing my skills and expertise in various technologies.</p>
+            </div>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- PROJECT 1 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="public/images/chatbot-project.png" alt="AI Chatbot Project">
+                            </div>
+                            <div class="project-info">
+                                <h3>AI Chatbot</h3>
+                                <p>Developed an intelligent chatbot using natural language processing to provide automated customer support and information retrieval.</p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>NLP</span>
+                                    <span>Machine Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>AI Chatbot</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/yourusername/ai-chatbot" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project-card" data-category="security">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="public/images/chat-software.png" alt="Secure Chat Software">
+                            </div>
+                            <div class="project-info">
+                                <h3>Secure Chat Software</h3>
+                                <p>Built an end-to-end encrypted chat application with focus on privacy and security for sensitive communications.</p>
+                                <div class="project-tech">
+                                    <span>JavaScript</span>
+                                    <span>Encryption</span>
+                                    <span>WebSockets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>Secure Chat Software</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/yourusername/secure-chat" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project-card" data-category="mobile">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="public/images/mobile-tracking.png" alt="Mobile Tracking Software">
+                            </div>
+                            <div class="project-info">
+                                <h3>Mobile Tracking Software</h3>
+                                <p>Developed a secure mobile tracking solution with privacy controls and location monitoring capabilities.</p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>GPS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>Mobile Tracking Software</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/amritanshu8661/Track-moblie-number.git" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 4 (New) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="/placeholder.svg?height=200&width=400&query=responsive%20portfolio%20website" alt="Portfolio Website">
+                            </div>
+                            <div class="project-info">
+                                <h3>Portfolio Website</h3>
+                                <p>Designed and developed a responsive personal portfolio website using modern web technologies.</p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>Portfolio Website</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/amritanshu8661/portfolio" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 5 (New) -->
+                <div class="project-card" data-category="security">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="/placeholder.svg?height=200&width=400&query=network%20security%20monitoring%20dashboard" alt="Network Security Dashboard">
+                            </div>
+                            <div class="project-info">
+                                <h3>Network Security Dashboard</h3>
+                                <p>Created a comprehensive dashboard for monitoring network security threats and vulnerabilities in real-time.</p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>React</span>
+                                    <span>Network Security</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>Network Security Dashboard</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/amritanshu8661/security-dashboard" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 6 (New) -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-img">
+                                <img src="/placeholder.svg?height=200&width=400&query=sentiment%20analysis%20dashboard" alt="Sentiment Analysis Tool">
+                            </div>
+                            <div class="project-info">
+                                <h3>Sentiment Analysis Tool</h3>
+                                <p>Developed a tool that analyzes sentiment in text data from social media and customer feedback to provide actionable insights.</p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>NLP</span>
+                                    <span>Data Visualization</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <div class="project-back-content">
+                                <h3>Sentiment Analysis Tool</h3>
+                                <p>View project details and source code</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/amritanshu8661/sentiment-analyzer" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-to-home">
+                <a href="index.html" class="btn primary-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <img id="modal-image" src="/placeholder.svg" alt="Project Image">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Amritanshu Kumar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    
+    <!-- Projects page specific script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project filtering functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Project modal functionality
+            const modal = document.getElementById('project-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const closeModal = document.querySelector('.close-modal');
+            const viewProjectButtons = document.querySelectorAll('.project-card-front .view-project');
+            
+            viewProjectButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const projectCard = button.closest('.project-card');
+                    const projectImage = projectCard.querySelector('img').src;
+                    const projectTitle = projectCard.querySelector('h3').textContent;
+                    const projectDescription = projectCard.querySelector('p').textContent;
+                    
+                    modalImage.src = projectImage;
+                    modalTitle.textContent = projectTitle;
+                    modalDescription.textContent = projectDescription;
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
