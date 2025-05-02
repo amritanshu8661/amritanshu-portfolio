@@ -30,7 +30,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
@@ -237,128 +237,59 @@
     </section>
 
     <!-- Projects Section - Update your projects -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Projects</h2>
-                <div class="underline"></div>
-            </div>
-            
-            <div class="project-filters">
-                <!-- UPDATE: Project categories - add or remove button elements -->
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="ai">AI</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <!-- ADD MORE FILTERS: Copy and paste the button element and change the text and data-filter attribute -->
-            </div>
-            
-            <div class="projects-grid">
-                <!-- PROJECT 1: Update project details -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-img">
-                        <!-- UPDATE: Project image path -->
-                        <img src="public/images/chatbot-project.png" alt="AI Chatbot Project">
-                        <div class="project-overlay">
-                            <a href="#" class="view-project">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <!-- UPDATE: Project title -->
-                        <h3>AI Chatbot</h3>
-                        <!-- UPDATE: Project description -->
-                        <p>Developed an intelligent chatbot using natural language processing to provide automated customer support and information retrieval.</p>
-                        <div class="project-tech">
-                            <!-- UPDATE: Technologies used - add or remove span elements -->
-                            <span>Python</span>
-                            <span>NLP</span>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- UPDATE: Project links - update href attributes -->
-                            <a href="https://github.com/yourusername/ai-chatbot" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <section id="projects" class="projects-preview centered">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <div class="underline"></div>
+            <p class="section-description">Here are some of my recent projects. Visit my projects page to see the full portfolio.</p>
+        </div>
+        
+        <div class="projects-preview-grid centered">
+           
+               
 
-                <!-- PROJECT 2: Update project details -->
-                <div class="project-card" data-category="security">
-                    <div class="project-img">
-                        <!-- UPDATE: Project image path -->
-                        <img src="public/images/chat-software.png" alt="Secure Chat Software">
-                        <div class="project-overlay">
-                            <a href="#" class="view-project">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <!-- UPDATE: Project title -->
-                        <h3>Secure Chat Software</h3>
-                        <!-- UPDATE: Project description -->
-                        <p>Built an end-to-end encrypted chat application with focus on privacy and security for sensitive communications.</p>
-                        <div class="project-tech">
-                            <!-- UPDATE: Technologies used - add or remove span elements -->
-                            <span>JavaScript</span>
-                            <span>Encryption</span>
-                            <span>WebSockets</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- UPDATE: Project links - update href attributes -->
-                            <a href="https://github.com/amritanshu8661/Secure-web-chat.git" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://v0-secure-web-chat.vercel.app/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
+            <!-- Featured Project 2 -->
+            <div class="project-card">
+    <div class="project-card-inner">
+        <div class="project-card-front">
+            <div class="project-img">
+                <img src="public/images/chat-software.png" alt="Secure Chat Software">
+            </div>
+            <div class="project-info">
+                <h3>Secure Chat Software</h3>
+                <p>Built an end-to-end encrypted chat application with focus on privacy and security.</p>
+                <div class="project-tech">
+                    <span>JavaScript</span>
+                    <span>Encryption</span>
                 </div>
-
-                <!-- PROJECT 3: Update project details -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-img">
-                        <!-- UPDATE: Project image path -->
-                        <img src="public/images/mobile-tracking.png" alt="Mobile Tracking Software">
-                        <div class="project-overlay">
-                            <a href="#" class="view-project">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <!-- UPDATE: Project title -->
-                        <h3>Mobile Tracking Software</h3>
-                        <!-- UPDATE: Project description -->
-                        <p>Developed a secure mobile tracking solution with privacy controls and location monitoring capabilities.</p>
-                        <div class="project-tech">
-                            <!-- UPDATE: Technologies used - add or remove span elements -->
-                            <span>Java</span>
-                            <span>Android</span>
-                            <span>GPS</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- UPDATE: Project links - update href attributes -->
-                            <a href="https://github.com/yourusername/mobile-tracker" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
         </div>
-    </section>
+        <div class="project-card-back">
+            <div class="project-back-content">
+                <h3>Secure Chat Software</h3>
+                <p>View project details and source code</p>
+                <div class="project-links">
+                    <a href="https://github.com/yourusername/secure-chat" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        
+        <div class="view-all-projects">
+            <a href="projects.html" class="btn primary-btn">
+                <i class="fas fa-project-diagram"></i> View All Projects
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- Experience Section - Update your work experience -->
     <section id="experience" class="experience section-with-sidebar right-sidebar">
@@ -403,6 +334,7 @@
         </div>
     </div>
 </section>
+
 
     <!-- Contact Section - Update your contact information -->
     <section id="contact" class="contact section-with-sidebar">
